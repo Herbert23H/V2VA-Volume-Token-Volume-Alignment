@@ -3,10 +3,21 @@ message: "If you use this software, please cite the paper below."
 title: "V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification"
 type: software
 authors:
-  - family-names: Hao
-    given-names: Herbert
-    affiliation: "Xiamen University, School of Aerospace Engineering"
-    email: "3080942941@qq.com"
+  - family-names: Duan
+    given-names: Zhenghao
+    orcid: "https://orcid.org/0009-0003-8750-3785"
+    affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
+    email: "34520251151581@stu.xmu.edu.cn"
+  - family-names: Lin
+    given-names: Dongyun
+    orcid: "https://orcid.org/0000-0002-1388-6053"
+    affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
+    email: "dylin@xmu.edu.cn"
+  - family-names: Lan
+    given-names: Weiyao
+    orcid: "https://orcid.org/0000-0002-0614-2259"
+    affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
+    email: "wylan@xmu.edu.cn"
 repository-code: "https://github.com/Herbert23H/V2VA-Volume-Token-Volume-Alignment"
 license: CC-BY-NC-4.0
 abstract: >-
@@ -25,9 +36,18 @@ preferred-citation:
   type: conference-paper
   title: "V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification"
   authors:
-    - family-names: Hao
-      given-names: Herbert
-      affiliation: "Xiamen University, School of Aerospace Engineering"
+    - family-names: Duan
+      given-names: Zhenghao
+      orcid: "https://orcid.org/0009-0003-8750-3785"
+      affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
+    - family-names: Lin
+      given-names: Dongyun
+      orcid: "https://orcid.org/0000-0002-1388-6053"
+      affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
+    - family-names: Lan
+      given-names: Weiyao
+      orcid: "https://orcid.org/0000-0002-0614-2259"
+      affiliation: "School of Aerospace Engineering, Xiamen University, Xiamen, China"
   collection-title: "Pacific Rim International Conference on Artificial Intelligence (PRICAI)"
   conference:
     name: "Pacific Rim International Conference on Artificial Intelligence (PRICAI)"

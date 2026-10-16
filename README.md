@@ -6,6 +6,9 @@
 Image Classification** — accepted at **PRICAI 2026** (Pacific Rim International Conference
 on Artificial Intelligence).
 
+**Zhenghao Duan, Dongyun Lin, Weiyao Lan** — School of Aerospace Engineering, Xiamen
+University, Xiamen, China.
+
 > 📄 The official proceedings have not been published yet. This page will be updated with
 the paper and DOI as soon as they are available. In the meantime, please cite the paper
 using the BibTeX entry in [Citation](#citation).
@@ -229,9 +232,9 @@ If you use this code, please cite the paper (accepted at PRICAI 2026; the offici
 proceedings are not published yet, so page numbers and DOI are still unknown):
 
 ```bibtex
-@inproceedings{hao2026v2va,
+@inproceedings{duan2026v2va,
   title     = {V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification},
-  author    = {Hao, Herbert},
+  author    = {Duan, Zhenghao and Lin, Dongyun and Lan, Weiyao},
   booktitle = {Pacific Rim International Conference on Artificial Intelligence (PRICAI)},
   year      = {2026},
   note      = {Accepted; official proceedings not yet published}
@@ -241,9 +244,9 @@ proceedings are not published yet, so page numbers and DOI are still unknown):
 Until the proceedings appear, the code itself can also be cited as:
 
 ```bibtex
-@software{hao2026v2vacode,
+@software{duan2026v2vacode,
   title  = {V2VA: Volume Token Volume Alignment},
-  author = {Hao, Herbert},
+  author = {Duan, Zhenghao and Lin, Dongyun and Lan, Weiyao},
   year   = {2026},
   url    = {https://github.com/Herbert23H/V2VA-Volume-Token-Volume-Alignment}
 }
