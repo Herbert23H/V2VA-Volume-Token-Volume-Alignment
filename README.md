@@ -1,5 +1,7 @@
 # V2VA: Volume Token Volume Alignment
 
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Model-V2VA__Pretrain__Checkpoint-yellow)](https://huggingface.co/Herbert23H/V2VA_Pretrain_Checkpoint)
+
 Self-supervised pretraining and downstream classification for **3D medical volumes**,
 built on top of [facebookresearch/jepa](https://github.com/facebookresearch/jepa) (V-JEPA).
 
@@ -169,10 +171,25 @@ Every path is relative and overridable, so the code runs from any clone:
 
 ### Pretrained weights
 
-The pretrained encoder (`jepa-latest.pth.tar`, ~1.5 GB) is not stored in Git. Download it
-and place it at
-`experiments/ViTB_medmnist3d_pretrain_64_fine-grain/jepa-latest.pth.tar`,
-or point `pretrain.folder` in the eval configs at wherever you keep it. See
+The pretrained encoder (`jepa-latest.pth.tar`, 1.5 GB) is hosted on the Hugging Face Hub:
+
+**👉 [Herbert23H/V2VA_Pretrain_Checkpoint](https://huggingface.co/Herbert23H/V2VA_Pretrain_Checkpoint)**
+
+```bash
+# place it exactly where the eval configs expect it
+hf download Herbert23H/V2VA_Pretrain_Checkpoint jepa-latest.pth.tar \
+  --local-dir experiments/ViTB_medmnist3d_pretrain_64_fine-grain
+```
+
+SHA-256 of the checkpoint (equals its LFS OID):
+
+```
+a731d61d67faf06c094b3ba002054103ce5c92c45568577a255030ff16307a5b
+```
+
+The checkpoint is a dict with the keys `epoch, encoder, predictor, target_encoder, opt,
+scaler`; the downstream code uses `target_encoder`. Alternatively point `pretrain.folder` in
+the eval configs at wherever you keep the file. See
 [`experiments/README.md`](experiments/README.md).
 
 ## Notes and limitations

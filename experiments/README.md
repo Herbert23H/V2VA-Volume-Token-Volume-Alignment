@@ -27,11 +27,16 @@ experiments/
 
 ## Pretrained weights
 
-The pretrained encoder (`jepa-latest.pth.tar`, ~1.5 GB) is **not** stored in Git.
-Place it at:
+The pretrained encoder (`jepa-latest.pth.tar`, 1.5 GB) is **not** stored in Git. It is
+hosted on the Hugging Face Hub:
 
-```
-experiments/ViTB_medmnist3d_pretrain_64_fine-grain/jepa-latest.pth.tar
+**👉 [Herbert23H/V2VA_Pretrain_Checkpoint](https://huggingface.co/Herbert23H/V2VA_Pretrain_Checkpoint)**
+
+```bash
+hf download Herbert23H/V2VA_Pretrain_Checkpoint jepa-latest.pth.tar \
+  --local-dir experiments/ViTB_medmnist3d_pretrain_64_fine-grain
 ```
 
-or point `pretrain.folder` in the eval configs to wherever you keep it.
+This places it at
+`experiments/ViTB_medmnist3d_pretrain_64_fine-grain/jepa-latest.pth.tar`,
+which is where the eval configs look. Or point `pretrain.folder` at wherever you keep it.
