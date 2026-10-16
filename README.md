@@ -11,6 +11,28 @@ lightweight residual 3D CNN — so the spatial arrangement of tokens is preserve
 to the prediction. Optional coordinate channels and a plane-agnostic cross-attention
 variant are also provided.
 
+## Method
+
+![V2VA overview](figures/paper/overview_v5.png)
+
+*Overview. **Top — JEPA pretraining (self-supervised volume-to-token alignment):** a 3D ViT
+encoder maps voxel patches to tokens, a predictor reconstructs the masked target tokens, and
+MSE is minimised between predicted and realistic target tokens. Two complementary 3D
+multi-block masking strategies are used. **Bottom — classification fine-tuning (supervised
+token-to-volume alignment):** the frozen (partially unfrozen) encoder tokens are re-folded
+into a 3D grid, concatenated with explicit `(D, H, W)` coordinate channels, and aggregated by
+a 3D Conv stem + 3D ResBlock stages + GAP into a summary token that drives the classifier.*
+
+![3D masking strategies](figures/paper/mask_short_v2.png)
+
+*The two 3D masking strategies used during pretraining on a 16³ token grid.
+**Spatially-extended masks** (blue) hide whole slabs and teach global layout, while
+**depth-oriented masks** (red) hide depth-aligned columns and force the encoder to reason
+along the depth axis.*
+
+Vector versions: [`figures/paper/overview_v5.pdf`](figures/paper/overview_v5.pdf),
+[`figures/paper/mask_short_v2.pdf`](figures/paper/mask_short_v2.pdf).
+
 ## Headline result
 
 Re-folding tokens into a volume gives a large accuracy gain over standard pooling heads, at
@@ -51,7 +73,7 @@ V2VA/
 │   └── utils/
 ├── configs/                  # YAML configs (paths are relative to the repository root)
 ├── experiments/              # run outputs (git-ignored; see experiments/README.md)
-├── figures/                  # result figures
+├── figures/                  # result figures (figures/paper/ = paper figures, PDF + PNG)
 ├── tools/medmnist3d/         # dataset inspection / mask visualisation utilities
 ├── data/                     # datasets (git-ignored; see data/README.md)
 ├── benchmark_heads.py        # params / FLOPs / latency benchmark for all heads
