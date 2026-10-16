@@ -43,11 +43,60 @@ Upstream config files that are not relevant to medical 3D volumes
 
 ## Licensing note
 
-Because this repository is a derivative of CC BY-NC 4.0 code, the repository as
-a whole is distributed under **CC BY-NC 4.0**: attribution is required and
-**commercial use is not permitted**.
+Upstream files (`app/`, `evals/`, `src/` except the files listed above as additions,
+`setup.py`, `requirements.txt`, the upstream configs and `docs/`) are Copyright © Meta
+Platforms, Inc. and affiliates and remain under **CC BY-NC 4.0**. That license carries two
+conditions:
 
-If the owner intends to release their own contributions under a permissive
-license (e.g. MIT), the upstream-derived files must be separated from the
-owner-authored files first, because the 3D head code in
-`src/models/attentive_pooler.py` is entangled with upstream code.
+- **Attribution (BY)** — keep the copyright notice, keep the license text, and indicate
+  that the material was modified. Satisfied here by `LICENSE`, this file and the per-file
+  headers.
+- **NonCommercial (NC)** — the material and adaptations of it may not be used for a
+  commercial purpose.
+
+CC BY-NC 4.0 has **no ShareAlike clause**, so we were not legally obliged to place the
+authors' own contributions under the same license. We do it anyway — the whole repository
+is distributed under **CC BY-NC 4.0** — because the main contribution
+(`TokenToVolume3DClassifier` in `src/models/attentive_pooler.py`) sits inside an upstream
+file and cannot be separated cleanly. **This is a deliberate, conservative choice**, not a
+licensing requirement.
+
+Two practical consequences worth knowing:
+
+- Creative Commons itself recommends **against** using its licenses for software;
+  "NonCommercial" is defined by the purpose of use, which is far less predictable for
+  code than a software license. Any commercial use would require either a re-write that
+  removes the JEPA-derived code, or a separate license from Meta.
+- This restriction propagates to the published weights, which is why the Hugging Face
+  model card is also `cc-by-nc-4.0`.
+
+## Third-party components
+
+| Component | Role here | License |
+| --- | --- | --- |
+| [facebookresearch/jepa](https://github.com/facebookresearch/jepa) | framework this repo derives from | CC BY-NC 4.0 |
+| [MedMNIST+](https://medmnist.com/) 3D dataset | the volumes used for pretraining/evaluation | **CC BY 4.0** (data); Apache-2.0 (their code) |
+
+MedMNIST's license reads: *"The MedMNIST dataset is licensed under Creative Commons
+Attribution 4.0 International (CC BY 4.0), except DermaMNIST under CC BY-NC 4.0."* The six
+3D subsets used here (Adrenal, Fracture, Nodule, Organ, Synapse, Vessel) are all CC BY 4.0;
+DermaMNIST is 2D and is not used.
+
+The dataset itself is **not** redistributed: `data/` is git-ignored and `data/README.md`
+points users at the official Zenodo release. Attribution and citation for MedMNIST and for
+the source paper of each subset are given in the top-level `README.md`.
+
+## Authorship and ownership
+
+The paper and the additions in this repository are the work of **Zhenghao Duan, Dongyun Lin
+and Weiyao Lan** (School of Aerospace Engineering, Xiamen University).
+
+This repository mixes author-owned code with third-party-licensed code. Before any
+relicensing, redistribution as part of another product, or non-academic use, **all authors**
+— and, where applicable, the authors' institution and any funding body — should agree.
+
+## Paper availability
+
+The paper's PDF is deliberately **not** hosted in this repository. The accepted version is
+subject to the publisher's (Springer) terms and the official PRICAI 2026 proceedings are not
+published yet; the top-level `README.md` will link the DOI once it exists.

@@ -222,9 +222,43 @@ the eval configs at wherever you keep the file. See
 This project is a derivative work of
 [facebookresearch/jepa](https://github.com/facebookresearch/jepa)
 (Copyright © Meta Platforms, Inc. and affiliates), which is licensed under
-**CC BY-NC 4.0**. This repository is therefore distributed under the same license —
+**CC BY-NC 4.0**. This repository is distributed under the same license —
 see [`LICENSE`](LICENSE) and [`NOTICE.md`](NOTICE.md). **Commercial use is not permitted.**
 The original upstream README is preserved at [`docs/JEPA_README.md`](docs/JEPA_README.md).
+
+### Third-party components
+
+| Component | Used for | License |
+| --- | --- | --- |
+| [facebookresearch/jepa](https://github.com/facebookresearch/jepa) | the framework this repository derives from | CC BY-NC 4.0 |
+| [MedMNIST+](https://medmnist.com/) | the 3D volumes used for pretraining and evaluation | **CC BY 4.0** (data); Apache-2.0 (their code) |
+
+The dataset is **not** redistributed here: `data/` is git-ignored and
+[`data/README.md`](data/README.md) points at the official Zenodo release. If you use
+these datasets, please cite MedMNIST:
+
+```bibtex
+@article{medmnistv2,
+  title   = {MedMNIST v2 - A large-scale lightweight benchmark for 2D and 3D biomedical image classification},
+  author  = {Yang, Jiancheng and Shi, Rui and Wei, Donglai and Liu, Zequan and Zhao, Lin and Ke, Bilian and Pfister, Hanspeter and Ni, Bingbing},
+  journal = {Scientific Data},
+  volume  = {10},
+  number  = {1},
+  pages   = {41},
+  year    = {2023}
+}
+```
+
+The six 3D subsets used here (Organ, Nodule, Fracture, Adrenal, Vessel, Synapse) come from
+public sources, and the MedMNIST team asks users to **also cite the source paper of each
+subset** they use — see their
+[`medmnist.bib`](https://medmnist.com/assets/v2/medmnist.bib).
+
+### Paper availability
+
+The paper's PDF is deliberately **not** hosted in this repository: the accepted version is
+subject to the publisher's (Springer) terms, and the official PRICAI 2026 proceedings are
+not published yet. This README will link the DOI once it exists.
 
 ## Citation
 
