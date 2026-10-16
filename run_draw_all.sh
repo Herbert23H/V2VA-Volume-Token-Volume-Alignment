@@ -2,7 +2,8 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_DIR="${CONFIG_DIR:-$REPO_ROOT/configs/evals/fine-grain-ablation/draw}"
+# 指向你自己的 draw 配置目录（本仓库不包含论文消融实验的 draw 配置）。
+CONFIG_DIR="${CONFIG_DIR:-$REPO_ROOT/configs/evals/draw}"
 WORKDIR="${WORKDIR:-$REPO_ROOT}"
 PYTHON_BIN="${PYTHON_BIN:-python}"
 DEVICE="${1:-cuda:0}"

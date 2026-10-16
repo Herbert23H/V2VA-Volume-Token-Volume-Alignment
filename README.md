@@ -108,12 +108,12 @@ python -m evals.onlytest_main \
   --fname configs/evals/fine-grain-val/vitb16_384_medmnist_plus_3d_ad_sota_test.yaml \
   --devices cuda:0
 
-# 4) head benchmark: params / FLOPs / latency
-python benchmark_heads.py
+# 4) head benchmark: params / FLOPs / latency (supply your own head configs)
+python benchmark_heads.py --config-dir configs/evals/head
 
 # 5) figures
 python -m evals.draw_main --fname <draw-config.yaml> --device cuda:0
-bash run_draw_all.sh cuda:0
+CONFIG_DIR=<draw-configs-dir> bash run_draw_all.sh cuda:0
 ```
 
 ### Selecting the classification head
@@ -155,9 +155,10 @@ or point `pretrain.folder` in the eval configs at wherever you keep it. See
 
 ## Notes and limitations
 
-- The `.sh` cheatsheet and `benchmark_heads.py` also reference ablation configs
-  (`configs/evals/fine-grain-ablation/**`, `configs/evals/fine-grain/**`) that are not part
-  of this snapshot yet; adjust the paths or supply your own configs.
+- The paper's ablation configs (`configs/evals/fine-grain-ablation/**`,
+  `configs/evals/fine-grain/**`) are intentionally **not** released. `benchmark_heads.py`
+  takes `--config-dir` and `run_draw_all.sh` takes `CONFIG_DIR`, so point them at your own
+  head / draw configs.
 - The 5-modality knee MRI / MRNet pipelines use non-public clinical data and are therefore
   **not reproducible** from this repository. They are included because the same
   Token2Volume head is used there.

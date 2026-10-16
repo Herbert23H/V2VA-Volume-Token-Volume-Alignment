@@ -27,35 +27,31 @@ python -m app.main \
   --fname configs/pretrain/vitb16_384_medmnist_plus_3d_fine-grain.yaml \
   --devices cuda:0
 
-python -m app.main \
-  --fname configs/pretrain/vitb16_384_mrnet_plus_3d_fine-grain.yaml \
-  --devices cuda:0
-
 ------------------------------------------------------------------------------------
-仅验证
-python -m evals.onlyeval_main \
-  --fname configs/evals/fine-grain/vitb16_384_medmnist_plus_3d_onlyeval.yaml \
-  --devices cuda:0
-------------------------------------------------------------------------------------
-
-下游多分类
+下游多分类（训练+验证）
 python -m evals.main \
-  --fname configs/evals/fine-grain-val/vitb16_384_medmnist_plus_3d_sy_sota.yaml \
+  --fname configs/evals/fine-grain-val/vitb16_384_medmnist_plus_3d_ad_sota.yaml \
   --devices cuda:0
 
 ------------------------------------------------------------------------------------
 
+测试集（输出混淆矩阵）
 python -m evals.onlytest_main \
-  --fname configs/evals/fine-grain-ablation/t2v_aba/vitb16_384_medmnist_plus_3d_vs_sota_test.yaml \
+  --fname configs/evals/fine-grain-val/vitb16_384_medmnist_plus_3d_ad_sota_test.yaml \
   --devices cuda:0
+
+------------------------------------------------------------------------------------
+分类头基准测试（params / FLOPs / 延迟）
+python benchmark_heads.py --config-dir <你的 head 配置目录>
 
 ------------------------------------------------------------------------------------
 绘图（独立于 eval/test）：PCA(before/after stem) + Grad-CAM(3-stage isosurface)
 # src/datasets/medmnist3d_frozen.py line106:
 # 'shuffle': True,    # 绘图方便找展示清晰图, 记得训练时改回training
+# 换成你自己的 draw 配置
 python -m evals.draw_main \
-  --fname configs/evals/fine-grain-ablation/draw/vitb16_384_medmnist_plus_3d_ft_draw.yaml \
+  --fname configs/evals/draw/<your_draw_config>.yaml \
   --device cuda:0
 
-# 一键绘图
-bash run_draw_all.sh
+# 一键绘图（遍历 CONFIG_DIR 下所有 yaml）
+CONFIG_DIR=configs/evals/draw bash run_draw_all.sh

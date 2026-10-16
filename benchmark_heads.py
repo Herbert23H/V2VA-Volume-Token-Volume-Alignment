@@ -264,8 +264,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--config-dir",
-        default="configs/evals/fine-grain-ablation/head",
-        help="YAML configs dir (default: configs/evals/fine-grain-ablation/head)",
+        required=True,
+        help="Directory holding the head YAML configs to benchmark.",
     )
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--warmup", type=int, default=0)
