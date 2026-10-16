@@ -275,15 +275,5 @@ proceedings are not published yet, so page numbers and DOI are still unknown):
 }
 ```
 
-Until the proceedings appear, the code itself can also be cited as:
-
-```bibtex
-@software{duan2026v2vacode,
-  title  = {V2VA: Volume Token Volume Alignment},
-  author = {Duan, Zhenghao and Lin, Dongyun and Lan, Weiyao},
-  year   = {2026},
-  url    = {https://github.com/Herbert23H/V2VA-Volume-Token-Volume-Alignment}
-}
-```
 
 Please also cite the upstream V-JEPA work and MedMNIST.
