@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this code, please cite it as below."
-title: "V2VA: Volume Token Volume Alignment"
+message: "If you use this software, please cite the paper below."
+title: "V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification"
 type: software
 authors:
   - family-names: Hao
@@ -10,16 +10,30 @@ authors:
 repository-code: "https://github.com/Herbert23H/V2VA-Volume-Token-Volume-Alignment"
 license: CC-BY-NC-4.0
 abstract: >-
-  3D medical volume self-supervised pretraining and downstream classification.
-  Encoder tokens are re-folded from [B, N, E] into a voxel grid and classified by
-  a residual 3D CNN, aligning the token representation with the volumetric
-  structure of the input.
+  V2VA aligns the embedding space of a 3D ViT encoder with the volumetric space of
+  the input. JEPA-style self-supervised pretraining learns the volume-to-token
+  direction; the classification head applies the reverse token-to-volume direction
+  by re-folding encoder tokens [B, N, E] into a voxel grid classified by a residual
+  3D CNN. Accepted at PRICAI 2026; the official proceedings are not published yet.
 keywords:
   - self-supervised learning
   - medical imaging
   - 3D vision transformer
   - V-JEPA
   - MedMNIST
+preferred-citation:
+  type: conference-paper
+  title: "V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification"
+  authors:
+    - family-names: Hao
+      given-names: Herbert
+      affiliation: "Xiamen University, School of Aerospace Engineering"
+  collection-title: "Pacific Rim International Conference on Artificial Intelligence (PRICAI)"
+  conference:
+    name: "Pacific Rim International Conference on Artificial Intelligence (PRICAI)"
+  year: 2026
+  status: in-press
+  notes: "Accepted at PRICAI 2026; official proceedings not yet published."
 references:
   - type: software
     title: "V-JEPA: Revisiting Feature Prediction for Learning Visual Representations from Video"

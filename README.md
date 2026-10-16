@@ -2,12 +2,22 @@
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Model-V2VA__Pretrain__Checkpoint-yellow)](https://huggingface.co/Herbert23H/V2VA_Pretrain_Checkpoint)
 
+**Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical
+Image Classification** — accepted at **PRICAI 2026** (Pacific Rim International Conference
+on Artificial Intelligence).
+
+> 📄 The official proceedings have not been published yet. This page will be updated with
+the paper and DOI as soon as they are available. In the meantime, please cite the paper
+using the BibTeX entry in [Citation](#citation).
+
 Self-supervised pretraining and downstream classification for **3D medical volumes**,
 built on top of [facebookresearch/jepa](https://github.com/facebookresearch/jepa) (V-JEPA).
 
-The core idea of V2VA is to close the gap between the *token* representation produced by a
-3D ViT encoder and the *volumetric* structure of the input. Instead of pooling all tokens
-into a single vector (GAP / attentive pooling / CLS), the encoder output `[B, N, E]` is
+The core idea of V2VA is to align two spaces: the encoder's *embedding space* and the
+*volumetric space* of the input. JEPA-style pretraining learns this alignment in the
+**volume-to-token** direction; the classification head then applies the reverse
+**token-to-volume** direction. Instead of pooling all tokens into a single vector
+(GAP / attentive pooling / CLS), the encoder output `[B, N, E]` is
 **re-folded back into a voxel grid** `[B, E(+3), D', H', W']` and classified by a
 lightweight residual 3D CNN — so the spatial arrangement of tokens is preserved all the way
 to the prediction. Optional coordinate channels and a plane-agnostic cross-attention
@@ -215,8 +225,23 @@ The original upstream README is preserved at [`docs/JEPA_README.md`](docs/JEPA_R
 
 ## Citation
 
+If you use this code, please cite the paper (accepted at PRICAI 2026; the official
+proceedings are not published yet, so page numbers and DOI are still unknown):
+
 ```bibtex
-@software{hao2026v2va,
+@inproceedings{hao2026v2va,
+  title     = {V2VA: Volume Token Volume Alignment across Embedding and Volumetric Spaces for 3D Medical Image Classification},
+  author    = {Hao, Herbert},
+  booktitle = {Pacific Rim International Conference on Artificial Intelligence (PRICAI)},
+  year      = {2026},
+  note      = {Accepted; official proceedings not yet published}
+}
+```
+
+Until the proceedings appear, the code itself can also be cited as:
+
+```bibtex
+@software{hao2026v2vacode,
   title  = {V2VA: Volume Token Volume Alignment},
   author = {Hao, Herbert},
   year   = {2026},
@@ -224,4 +249,4 @@ The original upstream README is preserved at [`docs/JEPA_README.md`](docs/JEPA_R
 }
 ```
 
-If you use this code, please also cite the upstream V-JEPA work.
+Please also cite the upstream V-JEPA work and MedMNIST.
