@@ -9,7 +9,8 @@ at `docs/JEPA_README.md`.
 
 ## What was modified
 
-Modifications and additions by the repository owner (2025–2026), on top of
+Modifications and additions by the paper's authors — Zhenghao Duan, Dongyun Lin and
+Weiyao Lan (School of Aerospace Engineering, Xiamen University; 2025–2026) — on top of
 upstream commit `51c59d5`:
 
 **New / substantially extended**

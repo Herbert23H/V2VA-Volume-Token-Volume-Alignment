@@ -1,4 +1,4 @@
-# Copyright (c) Herbert Hao, Xiamen University, School of Aerospace Engineering.
+# Copyright (c) Zhenghao Duan, Xiamen University, School of Aerospace Engineering.
 # All rights reserved.
 #
 
