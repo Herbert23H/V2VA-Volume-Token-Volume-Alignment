@@ -1,0 +1,71 @@
+# ============================================================
+# Datasets, model weights and medical data - never commit
+# ============================================================
+data/**
+!data/README.md
+
+*.pth.tar
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.npz
+*.npy
+*.nii
+*.nii.gz
+*.dcm
+*.xlsx
+*.xls
+
+# ============================================================
+# Run outputs (checkpoints / logs / metrics)
+# ============================================================
+experiments/**
+!experiments/README.md
+!experiments/plot_loss_curve.py
+!experiments/benchmark_heads.csv
+!experiments/jepa_r0.csv
+!experiments/params-pretrain.yaml
+
+outputs/
+logs/
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+wheels/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ============================================================
+# Environments
+# ============================================================
+.venv/
+venv/
+env/
+*.log
+
+# ============================================================
+# Editor / OS
+# ============================================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.*.swp
+*~
+
+# ============================================================
+# Cluster / platform specific
+# ============================================================
+.autodl/
+slurm-*.out

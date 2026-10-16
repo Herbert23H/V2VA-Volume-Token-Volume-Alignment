@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "V2VA: Volume Token Volume Alignment"
+type: software
+authors:
+  - family-names: Hao
+    given-names: Herbert
+    affiliation: "Xiamen University, School of Aerospace Engineering"
+    email: "3080942941@qq.com"
+repository-code: "https://github.com/Herbert23H/V2VA-Volume-Token-Volume-Alignment"
+license: CC-BY-NC-4.0
+abstract: >-
+  3D medical volume self-supervised pretraining and downstream classification.
+  Encoder tokens are re-folded from [B, N, E] into a voxel grid and classified by
+  a residual 3D CNN, aligning the token representation with the volumetric
+  structure of the input.
+keywords:
+  - self-supervised learning
+  - medical imaging
+  - 3D vision transformer
+  - V-JEPA
+  - MedMNIST
+references:
+  - type: software
+    title: "V-JEPA: Revisiting Feature Prediction for Learning Visual Representations from Video"
+    authors:
+      - name: "Meta Platforms, Inc. and affiliates"
+    repository-code: "https://github.com/facebookresearch/jepa"

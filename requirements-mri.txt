@@ -1,0 +1,13 @@
+# Extra dependencies used only by the 3D medical pipeline
+# (MRI datasets, MedMNIST+3D tooling and figure scripts).
+#
+#   pip install -r requirements-mri.txt
+#
+# The core V-JEPA training/eval path only needs requirements.txt.
+
+monai
+nibabel
+pydicom
+matplotlib
+scikit-learn
+tqdm

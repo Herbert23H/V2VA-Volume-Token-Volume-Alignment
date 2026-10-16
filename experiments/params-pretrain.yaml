@@ -1,0 +1,80 @@
+app: vjepa
+data:
+  batch_size: 8
+  crop_size: 64
+  dataset_type: medmnist3d
+  datasets:
+  # paths relative to the repository root
+  - data/medmnist3d/organmnist3d_64.npz
+  - data/medmnist3d/nodulemnist3d_64.npz
+  - data/medmnist3d/fracturemnist3d_64.npz
+  depth_patch_size: 4
+  in_chans: 1
+  mask_type: multiblock3d_mri
+  num_slices: 64
+  num_workers: 12
+  patch_size: 4
+  pin_mem: true
+logging:
+  folder: experiments/ViTB_medmnist3d_pretrain_64_fine-grain
+  write_tag: jepa
+loss:
+  loss_exp: 1.5
+  reg_coeff_end: 0.0
+  reg_coeff_schedule: cosine
+  reg_coeff_start: 0.0
+mask:
+- aspect_ratio:
+  - 0.25
+  - 4
+  depth_scale:
+  - 0.75
+  - 0.75
+  max_depth_keep: 1.0
+  max_keep: null
+  num_blocks: 8
+  spatial_scale:
+  - 0.0625
+  - 0.0625
+- aspect_ratio:
+  - 0.25
+  - 4
+  depth_scale:
+  - 0.0625
+  - 0.0625
+  max_depth_keep: 1.0
+  max_keep: null
+  num_blocks: 8
+  spatial_scale:
+  - 0.75
+  - 0.75
+meta:
+  dtype: bfloat16
+  eval_freq: 1
+  load_checkpoint: false
+  read_checkpoint: null
+  seed: 234
+  use_sdpa: true
+model:
+  model_name: vit_base
+  pred_depth: 6
+  pred_embed_dim: 384
+  uniform_power: true
+  use_mask_tokens: true
+  zero_init_mask_tokens: true
+nodes: 1
+optimization:
+  clip_grad: 5.0
+  ema:
+  - 0.998
+  - 1.0
+  epochs: 300
+  final_lr: 1.0e-05
+  final_weight_decay: 0.2
+  ipe: 99
+  ipe_scale: 1
+  lr: 0.0002
+  start_lr: 1.0e-06
+  warmup: 10
+  weight_decay: 0.02
+tasks_per_node: 1

@@ -1,0 +1,81 @@
+nodes: 1
+tasks_per_node: 1
+tag: cls_CNN_unfreeze2   # default:tarenc
+eval_name: mri_classification_frozen
+resume_checkpoint: false
+data:
+ dataset_type: medmnist3d
+ # Paths are relative to the repository root (see README -> Data).
+ dataset_npz: data/medmnist3d/adrenalmnist3d_64.npz
+ split_train: train
+ split_val: val
+ defect: ["label"]
+ defect_classes: [2]
+ resolution: 64 
+optimization:
+ num_epochs: 200
+ batch_size: 32   
+ weight_decay: 0.001
+ lr: 1.0e-04
+ start_lr: 1.0e-04
+ final_lr: 1.0e-05
+ warmup: 0
+ use_bfloat16: true
+ num_workers: 12
+ persistent_workers: true
+ prefetch_factor: 4
+ pin_memory: true
+ train_drop_last: true
+ plot_loss_curve: true
+ scl_weight: 0.0      
+ scl_temperature: 0.03
+ use_balanced_softmax: false
+ balanced_softmax_momentum: 0.95
+ balanced_softmax_eps: 1.0e-6
+ use_cosface: false   # 考虑部署完全形态
+ cosface_s: 30.0
+ cosface_m: 0.35
+ use_layerwise_lr: false
+ encoder_lr: 1.0e-05
+ pagca_lr: 0.0
+ classifier_lr: 1.0e-04
+ # ---- Plane-Agnostic Cross Attention + Plane Gate (optional) ----
+ # 关闭时走旧方法（单路token + MultiHeadAttentiveClassifier）
+ use_plane_path: false
+ use_plane_cross_attention: false
+ plane_cross_num_heads: 8
+ plane_cross_dropout: 0.1
+ plane_gate_pool_num_queries: 4
+ plane_gate_pool_num_heads: 8
+ plane_gate_pool_depth: 2
+ plane_gate_pool_mlp_ratio: 4.0
+ plane_gate_pool_dropout: 0.1
+ # ---- Token->3D CNN head (optional) ----
+ # 将 [B, N, E] token 反flatten为 [B, E(+3), D, H, W]，再用残差3D卷积分类
+ use_token_3d_cnn_head: true
+ token_3d_use_coords: true
+ token_3d_stem_channels: 128
+ token_3d_stage_channels: [128, 256, 384]
+ token_3d_stage_depths: [1, 1, 1]
+ token_3d_stage_strides: [1, 2, 2]
+ token_3d_dropout: 0.1
+ # 可选固定 token 网格(Dr,Hr,Wr)，留空则根据输入体素尺寸和patch参数自动推断
+ token_3d_grid_size: null
+pretrain:
+ model_name: vit_base
+#  checkpoint_key: target_encoder
+ clip_duration: null
+ num_slices: 64
+ depth_patch_size: 4
+ crop_size: 64
+ in_chans: 1
+ uniform_power: true
+ use_sdpa: true
+ use_silu: false
+ tight_silu: false
+ patch_size: 4
+ # Checkpoint location; weights are not tracked by git (see experiments/README.md).
+ folder: experiments/ViTB_medmnist3d_pretrain_64_fine-grain
+ checkpoint: jepa-latest.pth.tar
+ write_tag: jepa
+ unfreeze: 2
